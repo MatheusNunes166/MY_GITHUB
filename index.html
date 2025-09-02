@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conceitos Básicos - Git e GitHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #f44d27 0%, #8134af 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .nav-button {
+            padding: 12px 25px;
+            background-color: #8134af;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background-color: #6b2c8f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-button.disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .nav-button.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background: #8134af;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-body p {
+            margin-bottom: 15px;
+        }
+        
+        .card-body ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .card-body li {
+            margin-bottom: 8px;
+        }
+        
+        .icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Conceitos Básicos do Git e GitHub</h1>
+            <p>Entenda os fundamentos do controle de versão e colaboração em projetos de desenvolvimento de software</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-buttons">
+            <a href="#" class="nav-button disabled">Conceitos Básicos</a>
+            <a href="#" class="nav-button">Fluxo de Trabalho</a>
+            <a href="#" class="nav-button">Resolução de Conflitos</a>
+        </div>
+        
+        <div class="card-container">
+            <div class="card">
+                <div class="card-header">O que é Git?</div>
+                <div class="card-body">
+                    <span class="icon">📝</span>
+                    <p>Git é um sistema de controle de versão distribuído gratuito e de código aberto projetado para lidar com tudo, desde projetos pequenos a muito grandes com velocidade e eficiência.</p>
+                    <p>O Git permite que múltiplos desenvolvedores trabalhem no mesmo projeto simultaneamente sem interferir no trabalho um do outro.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">O que é GitHub?</div>
+                <div class="card-body">
+                    <span class="icon">🐙</span>
+                    <p>GitHub é uma plataforma de hospedagem de código-fonte com controle de versão usando o Git. Ele adiciona seus próprios recursos além do Git.</p>
+                    <p>O GitHub permite que desenvolvedores colaborem em projetos, contribuam para software de código aberto e hospedem seus portfolios.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Repositório</div>
+                <div class="card-body">
+                    <span class="icon">📂</span>
+                    <p>Um repositório (repo) é um local onde todos os arquivos de um projeto são armazenados. Cada projeto tem seu próprio repositório.</p>
+                    <p>Você pode acessar o repositório por meio de um URL único, onde pode armazenar seu código, texto, imagens ou qualquer arquivo relacionado ao projeto.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Commit</div>
+                <div class="card-body">
+                    <span class="icon">💾</span>
+                    <p>Um commit é uma operação que envia as alterações mais recentes do código-fonte para o repositório, tornando essas alterações parte da revisão principal do repositório.</p>
+                    <p>Cada commit tem um ID único que permite manter o registro de quais alterações foram feitas, quando e por quem.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Branch (Ramificação)</div>
+                <div class="card-body">
+                    <span class="icon">🌿</span>
+                    <p>Branches são ramificações independentes do código principal. Eles permitem que você desenvolva recursos, corrija bugs ou experimente com segurança sem afetar o projeto principal.</p>
+                    <p>Geralmente, o branch principal é chamado de "main" ou "master", e novos branches são criados a partir dele.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Merge (Mesclagem)</div>
+                <div class="card-body">
+                    <span class="icon">🔄</span>
+                    <p>Merge é o processo de combinar alterações de diferentes branches. Quando você conclui o trabalho em um branch, pode mesclá-lo de volta ao branch principal.</p>
+                    <p>Isso integra as alterações do branch de recurso com a base de código principal.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Clone</div>
+                <div class="card-body">
+                    <span class="icon">⤵️</span>
+                    <p>Clonar significa criar uma cópia local de um repositório que está hospedado em um servidor remoto, como GitHub.</p>
+                    <p>Isso permite que você trabalhe no projeto localmente e, em seguida, envie suas alterações de volta para o repositório remoto quando terminar.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Pull Request</div>
+                <div class="card-body">
+                    <span class="icon">🔔</span>
+                    <p>Um Pull Request (PR) é uma funcionalidade do GitHub que permite solicitar que alterações do seu branch sejam mescladas em outro branch.</p>
+                    <p>Os PRs permitem discussão e revisão das alterações propostas antes que elas sejam integradas ao código principal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="container">
+            <p>Página 1 de 3 - Conceitos Básicos do Git e GitHub</p>
+            <p>Próxima parte: Fluxo de Trabalho no Git e GitHub</p>
+        </div>
+    </div>
+</body>
+</html>
