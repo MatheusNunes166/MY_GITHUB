@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resolução de Conflitos - Git e GitHub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f8fa;
+      color: #24292e;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4078c0 0%, #6e5494 100%);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .nav-button {
+      padding: 12px 25px;
+      background-color: #6e5494;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .nav-button:hover {
+      background-color: #5a407c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-button.disabled {
+      background-color: #6c757d;
+      cursor: not-allowed;
+    }
+
+    .nav-button.primary {
+      background-color: #4078c0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      color: #6e5494;
+      margin-bottom: 15px;
+    }
+
+    pre {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 0.7rem;
+      text-align: left;
+    }
+    table th {
+      background: #4078c0;
+      color: #fff;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: #6c757d;
+      font-size: 0.9rem;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Resolução de Conflitos</h1>
+    <p>Como lidar com conflitos durante merges e pull requests</p>
+  </header>
+
+  <div class="container">
+    <div class="nav-buttons">
+      <a href="index.html" class="nav-button">Conceitos Básicos</a>
+      <a href="fluxo.html" class="nav-button">Fluxo de Trabalho</a>
+      <a href="#" class="nav-button disabled">Resolução de Conflitos</a>
+    </div>
+
+    <div class="card">
+      <h2>1) Criando uma feature branch</h2>
+      <pre><code>git checkout -b feature/resolvendo-conflito</code></pre>
+      <p>Crie um arquivo <code>resolucao_conflito.md</code> e documente com prints como você resolveu um conflito (antes/depois).</p>
+    </div>
+
+    <div class="card">
+      <h2>2) Merge com a branch main</h2>
+      <pre><code># Certifique-se de estar na sua feature
+git checkout feature/resolvendo-conflito
+git fetch origin
+git merge origin/main</code></pre>
+
+      <p><strong>Se não houver conflitos:</strong></p>
+      <pre><code>git push -u origin feature/resolvendo-conflito</code></pre>
+
+      <p><strong>Se houver conflitos:</strong></p>
+      <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+(sua versão na branch)
+=======
+(versão que veio de origin/main)
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>3) Abrindo um Pull Request</h2>
+      <ol>
+        <li>No GitHub, clique em <strong>Compare & pull request</strong>.</li>
+        <li>Confirme a branch base e a branch de comparação.</li>
+      </ol>
+      <pre><code>## Objetivo
+-
+
+## Mudanças
+-
+
+## Checklist
+- [ ] Testes locais
+- [ ] Atualizado docs</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>Estratégias de Merge no GitHub</h2>
+      <table>
+        <tr>
+          <th>Estratégia</th>
+          <th>Resultado</th>
+          <th>Prós</th>
+          <th>Contras</th>
+        </tr>
+        <tr>
+          <td>Merge commit</td>
+          <td>Cria um commit de merge</td>
+          <td>Histórico completo</td>
+          <td>Histórico mais verboso</td>
+        </tr>
+        <tr>
+          <td>Squash and merge</td>
+          <td>Condensa commits em 1</td>
+          <td>História limpa</td>
+          <td>Perde granularidade</td>
+        </tr>
+        <tr>
+          <td>Rebase and merge</td>
+          <td>Reaplica commits sobre main</td>
+          <td>História linear</td>
+          <td>Reescreve SHAs</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="footer-buttons">
+      <a href="fluxo.html" class="nav-button">← Voltar para Fluxo</a>
+      <a href="index.html" class="nav-button primary">Voltar ao Início</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Página 3 de 3 - Resolução de Conflitos</p>
+  </div>
+</body>
+</html>
