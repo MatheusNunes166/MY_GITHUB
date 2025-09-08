@@ -13,8 +13,8 @@
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: #f5f8fa;
+            color: #24292e;
             line-height: 1.6;
         }
         
@@ -25,7 +25,7 @@
         }
         
         header {
-            background: linear-gradient(135deg, #f44d27 0%, #8134af 100%);
+            background: linear-gradient(135deg, #6f42c1 0%, #fd7e14 100%);
             color: white;
             padding: 40px 0;
             text-align: center;
@@ -54,7 +54,7 @@
         
         .nav-button {
             padding: 12px 25px;
-            background-color: #8134af;
+            background-color: #6f42c1;
             color: white;
             border: none;
             border-radius: 30px;
@@ -66,19 +66,29 @@
         }
         
         .nav-button:hover {
-            background-color: #6b2c8f;
+            background-color: #5a359d;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
         .nav-button.disabled {
-            background-color: #cccccc;
+            background-color: #6c757d;
             cursor: not-allowed;
         }
         
         .nav-button.disabled:hover {
             transform: none;
             box-shadow: none;
+        }
+        
+        .nav-button.primary {
+            background-color: #fd7e14;
+            font-size: 1.1rem;
+            padding: 15px 30px;
+        }
+        
+        .nav-button.primary:hover {
+            background-color: #e76f11;
         }
         
         .card-container {
@@ -94,6 +104,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #6f42c1;
         }
         
         .card:hover {
@@ -102,12 +113,13 @@
         }
         
         .card-header {
-            background: #8134af;
-            color: white;
+            background: #f8f9fa;
+            color: #6f42c1;
             padding: 20px;
             text-align: center;
             font-size: 1.4rem;
             font-weight: bold;
+            border-bottom: 1px solid #e9ecef;
         }
         
         .card-body {
@@ -125,21 +137,91 @@
         
         .card-body li {
             margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .card-body li:before {
+            content: "•";
+            color: #6f42c1;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
         
         .icon {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 15px;
             display: block;
             text-align: center;
+            color: #6f42c1;
         }
         
         .footer {
             text-align: center;
             margin-top: 50px;
-            padding: 20px;
-            color: #666;
+            padding: 30px;
+            color: #6c757d;
             font-size: 0.9rem;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .progress-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 500px;
+            margin: 30px auto;
+            position: relative;
+        }
+        
+        .progress-step {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #6f42c1;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .progress-step.active {
+            background-color: #fd7e14;
+            transform: scale(1.1);
+        }
+        
+        .progress-bar-line {
+            position: absolute;
+            height: 4px;
+            background-color: #6f42c1;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+        
+        .progress-label {
+            position: absolute;
+            top: 100%;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #6c757d;
+            width: 100px;
+            left: -30px;
+            text-align: center;
         }
         
         @media (max-width: 768px) {
@@ -155,6 +237,21 @@
                 font-size: 1rem;
                 padding: 0 15px;
             }
+            
+            .footer-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .progress-bar {
+                max-width: 300px;
+            }
+            
+            .progress-label {
+                font-size: 0.8rem;
+                width: 80px;
+                left: -20px;
+            }
         }
     </style>
 </head>
@@ -169,8 +266,21 @@
     <div class="container">
         <div class="nav-buttons">
             <a href="#" class="nav-button disabled">Conceitos Básicos</a>
-            <a href="#" class="nav-button">Fluxo de Trabalho</a>
-            <a href="#" class="nav-button">Resolução de Conflitos</a>
+            <a href="fluxo.html" class="nav-button">Fluxo de Trabalho</a>
+            <a href="conflitos.html" class="nav-button">Resolução de Conflitos</a>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-bar-line"></div>
+            <div class="progress-step active">1
+                <div class="progress-label">Conceitos</div>
+            </div>
+            <div class="progress-step">2
+                <div class="progress-label">Fluxo</div>
+            </div>
+            <div class="progress-step">3
+                <div class="progress-label">Conflitos</div>
+            </div>
         </div>
         
         <div class="card-container">
@@ -180,6 +290,13 @@
                     <span class="icon">📝</span>
                     <p>Git é um sistema de controle de versão distribuído gratuito e de código aberto projetado para lidar com tudo, desde projetos pequenos a muito grandes com velocidade e eficiência.</p>
                     <p>O Git permite que múltiplos desenvolvedores trabalhem no mesmo projeto simultaneamente sem interferir no trabalho um do outro.</p>
+                    <p><strong>Características principais:</strong></p>
+                    <ul>
+                        <li>Controle de versão distribuído</li>
+                        <li>Velocidade e desempenho</li>
+                        <li>Ramificação e mesclagem eficientes</li>
+                        <li>Histórico completo do projeto</li>
+                    </ul>
                 </div>
             </div>
             
@@ -189,6 +306,14 @@
                     <span class="icon">🐙</span>
                     <p>GitHub é uma plataforma de hospedagem de código-fonte com controle de versão usando o Git. Ele adiciona seus próprios recursos além do Git.</p>
                     <p>O GitHub permite que desenvolvedores colaborem em projetos, contribuam para software de código aberto e hospedem seus portfolios.</p>
+                    <p><strong>Funcionalidades principais:</strong></p>
+                    <ul>
+                        <li>Hospedagem de repositórios Git</li>
+                        <li>Pull Requests e revisão de código</li>
+                        <li>GitHub Issues para rastreamento de tarefas</li>
+                        <li>GitHub Pages para hospedagem de sites</li>
+                        <li>Integração com diversas ferramentas</li>
+                    </ul>
                 </div>
             </div>
             
@@ -198,6 +323,11 @@
                     <span class="icon">📂</span>
                     <p>Um repositório (repo) é um local onde todos os arquivos de um projeto são armazenados. Cada projeto tem seu próprio repositório.</p>
                     <p>Você pode acessar o repositório por meio de um URL único, onde pode armazenar seu código, texto, imagens ou qualquer arquivo relacionado ao projeto.</p>
+                    <p><strong>Tipos de repositórios:</strong></p>
+                    <ul>
+                        <li><strong>Local:</strong> Armazenado no seu computador</li>
+                        <li><strong>Remoto:</strong> Hospedado em um servidor (como GitHub)</li>
+                    </ul>
                 </div>
             </div>
             
@@ -207,6 +337,12 @@
                     <span class="icon">💾</span>
                     <p>Um commit é uma operação que envia as alterações mais recentes do código-fonte para o repositório, tornando essas alterações parte da revisão principal do repositório.</p>
                     <p>Cada commit tem um ID único que permite manter o registro de quais alterações foram feitas, quando e por quem.</p>
+                    <p><strong>Boas práticas para commits:</strong></p>
+                    <ul>
+                        <li>Mensagens claras e descritivas</li>
+                        <li>Commits atômicos (uma mudança por commit)</li>
+                        <li>Commits frequentes</li>
+                    </ul>
                 </div>
             </div>
             
@@ -216,6 +352,13 @@
                     <span class="icon">🌿</span>
                     <p>Branches são ramificações independentes do código principal. Eles permitem que você desenvolva recursos, corrija bugs ou experimente com segurança sem afetar o projeto principal.</p>
                     <p>Geralmente, o branch principal é chamado de "main" ou "master", e novos branches são criados a partir dele.</p>
+                    <p><strong>Vantagens do uso de branches:</strong></p>
+                    <ul>
+                        <li>Isolamento de funcionalidades</li>
+                        <li>Experimentação sem risco</li>
+                        <li>Desenvolvimento paralelo</li>
+                        <li>Facilidade na revisão de código</li>
+                    </ul>
                 </div>
             </div>
             
@@ -225,26 +368,17 @@
                     <span class="icon">🔄</span>
                     <p>Merge é o processo de combinar alterações de diferentes branches. Quando você conclui o trabalho em um branch, pode mesclá-lo de volta ao branch principal.</p>
                     <p>Isso integra as alterações do branch de recurso com a base de código principal.</p>
+                    <p><strong>Tipos de merge:</strong></p>
+                    <ul>
+                        <li><strong>Fast-forward:</strong> Quando não há conflitos</li>
+                        <li><strong>Three-way merge:</strong> Quando há alterações divergentes</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="card">
-                <div class="card-header">Clone</div>
-                <div class="card-body">
-                    <span class="icon">⤵️</span>
-                    <p>Clonar significa criar uma cópia local de um repositório que está hospedado em um servidor remoto, como GitHub.</p>
-                    <p>Isso permite que você trabalhe no projeto localmente e, em seguida, envie suas alterações de volta para o repositório remoto quando terminar.</p>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">Pull Request</div>
-                <div class="card-body">
-                    <span class="icon">🔔</span>
-                    <p>Um Pull Request (PR) é uma funcionalidade do GitHub que permite solicitar que alterações do seu branch sejam mescladas em outro branch.</p>
-                    <p>Os PRs permitem discussão e revisão das alterações propostas antes que elas sejam integradas ao código principal.</p>
-                </div>
-            </div>
+        </div>
+        
+        <div class="footer-buttons">
+            <a href="fluxo.html" class="nav-button primary">Avançar para o Fluxo de Trabalho →</a>
         </div>
     </div>
     
@@ -254,5 +388,18 @@
             <p>Próxima parte: Fluxo de Trabalho no Git e GitHub</p>
         </div>
     </div>
+
+    <script>
+        // Adicionando interatividade apenas aos botões desabilitados
+        document.addEventListener('DOMContentLoaded', function() {
+            const disabledButtons = document.querySelectorAll('.nav-button.disabled');
+            
+            disabledButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
